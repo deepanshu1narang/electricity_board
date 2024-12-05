@@ -1,0 +1,33 @@
+.table {
+    border: 1px solid transparent;
+    background-color: whitesmoke;
+
+    >div {
+        >table {
+            width: 100%;
+        }
+    }
+
+    /* &::-webkit-scrollbar {
+        width: 0.4rem;
+        border-radius: 1.5rem;
+        display: none;
+    } */
+
+    /* &::-webkit-scrollbar-track {
+        -webkit-border-radius: 1rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 1.5rem;
+    } */
+
+    /* ::-webkit-scrollbar-thumb:hover {
+        background-image: linear-gradient(#ee0970, #ff6a00);
+      } */
+
+    /* ::-webkit-scrollbar-track-piece {
+        background-color: transparent;
+        -webkit-border-radius: 1rem;
+      }  */
+}
