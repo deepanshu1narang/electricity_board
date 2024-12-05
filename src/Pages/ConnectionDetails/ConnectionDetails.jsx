@@ -9,6 +9,7 @@ import dayjs from 'dayjs';
 import { baseUrl, getHeader } from '../../Utils/apiConnection';
 import { notifications } from '@mantine/notifications';
 import { IconCheck, IconX } from '@tabler/icons-react';
+import SkeletonTable from '../../Utils/SkeletonTable';
 const ConnectionDetails = ({ isAllowed }) => {
   const { classes, theme } = useStyles(useStyles);
   const { id } = useParams();
@@ -172,15 +173,15 @@ const ConnectionDetails = ({ isAllowed }) => {
 
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'Applicant Name'}</label>
-                  <TextInput
+                  {form.getInputProps('Applicant_Name').value ? <TextInput
                     className={classes.textInput}
                     variant="unstyled"
                     {...form.getInputProps('Applicant_Name')}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'Gender'}</label>
-                  <Select
+                  {form.getInputProps('Gender').value ? <Select
                     placeholder="Select Gender"
                     className={classes.textInput}
                     variant="unstyled"
@@ -193,12 +194,12 @@ const ConnectionDetails = ({ isAllowed }) => {
 
                     ]}
 
-                  />
+                  /> : <SkeletonTable numbers={1} />}
 
                 </Box>
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'District'}</label>
-                  <Select
+                  {form.getInputProps('District').value ? <Select
                     className={classes.textInput}
                     variant="unstyled"
                     data={[
@@ -209,27 +210,27 @@ const ConnectionDetails = ({ isAllowed }) => {
                       { value: 'Other', label: 'Other' },
                     ]}
                     {...form.getInputProps('District')}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
                 <Box className={`${classes.inputWrapper}`}>
                   <label className={classes.label}>{'State'}</label>
-                  <TextInput
+                  {form.getInputProps("State").value ? <TextInput
                     className={classes.textInput}
                     variant="unstyled"
                     {...form.getInputProps("State")}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'Pincode'}</label>
-                  <TextInput
+                  {form.getInputProps("Pincode").value ? <TextInput
                     className={classes.textInput}
                     variant="unstyled"
                     {...form.getInputProps("Pincode")}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'Ownership'}</label>
-                  <Select
+                  {form.getInputProps("Ownership").value ? <Select
                     className={classes.textInput}
                     variant="unstyled"
                     data={[
@@ -237,12 +238,12 @@ const ConnectionDetails = ({ isAllowed }) => {
                       { value: 'INDIVIDUAL', label: 'INDIVIDUAL' },
                     ]}
                     {...form.getInputProps("Ownership")}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
 
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'Category'}</label>
-                  <Select
+                  {form.getInputProps("Category").value ? <Select
                     className={classes.textInput}
                     variant="unstyled"
                     data={[
@@ -250,20 +251,20 @@ const ConnectionDetails = ({ isAllowed }) => {
                       { value: 'Residential', label: 'Residential' },
                     ]}
                     {...form.getInputProps("Category")}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'Load_Applied'}</label>
-                  <TextInput
+                  {form.getInputProps("Load_Applied").value ? <TextInput
                     className={classes.textInput}
                     variant="unstyled"
                     type='number'
                     {...form.getInputProps("Load_Applied")}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'GovtID Type'}</label>
-                  <Select
+                  {form.getInputProps("GovtID_Type").value ? <Select
                     className={classes.textInput}
                     variant="unstyled"
                     // disabled
@@ -275,44 +276,44 @@ const ConnectionDetails = ({ isAllowed }) => {
                       { value: 'VOTER_ID', label: 'VOTER_ID' },
                     ]}
                     {...form.getInputProps("GovtID_Type")}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'ID_Number'}</label>
-                  <TextInput
+                  {form.getInputProps("ID_Number") ? <TextInput
 
                     className={classes.textInput}
                     // disabled
                     readOnly
                     variant="unstyled"
                     {...form.getInputProps("ID_Number")}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'Reviewer_ID'}</label>
-                  <TextInput
+                  {form.getInputProps("Reviewer_ID").value ? <TextInput
                     className={classes.textInput}
                     variant="unstyled"
                     type='number'
                     {...form.getInputProps("Reviewer_ID")}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
                 <Box className={classes.inputWrapper}>
                   <label className={classes.label}>{'Reviewer_Name'}</label>
-                  <TextInput
+                  {form.getInputProps("Reviewer_Name").value ? <TextInput
                     className={classes.textInput}
                     variant="unstyled"
 
                     {...form.getInputProps("Reviewer_Name")}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
                 <Box className={`${classes.inputWrapper} ${classes.textAreaWrapper}`}>
                   <label className={classes.label}>{'Reviewer_Comments'}</label>
-                  <Textarea
+                  {form.getInputProps("Reviewer_Comments") ? <Textarea
                     className={`${classes.textInput} ${classes.textArea}`}
                     variant="unstyled"
                     {...form.getInputProps("Reviewer_Comments")}
-                  />
+                  /> : <SkeletonTable numbers={1} />}
                 </Box>
 
 

@@ -14,6 +14,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { baseUrl, getHeader } from '../../../Utils/apiConnection';
 import { MonthPickerInput } from '@mantine/dates';
+import SkeletonTable from '../../../Utils/SkeletonTable';
 function BarChart() {
     const { classes, theme } = useStyles(useStyles);
     const [dashboardData, setDashboardData] = useState({ datasets: [], labels: ['January', 'February', 'March', 'April', 'May'] });
@@ -22,6 +23,7 @@ function BarChart() {
     const [dateRange, setDateRange] = useState([firstDate, new Date(2021, 5, 28)]);
     const [status, setStatus] = useState('Approved');
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -86,6 +88,7 @@ function BarChart() {
         body.endMonth = endDate.getMonth();
         body.endYear = endDate.getFullYear()
         setError('');
+        setIsLoading(true);
         const apiResp = await fetch(`${baseUrl}/user/dashboard/`, {
             method: 'POST',
             body: JSON.stringify(body),
@@ -109,6 +112,7 @@ function BarChart() {
                 return theme.colors[color][0];
             }
             let dashboardData = await apiResp.json();
+            setIsLoading(false);
             setDashboardData({
                 labels: getMonthsBetweenDates(startDate, endDate),
                 datasets: [{
@@ -127,7 +131,8 @@ function BarChart() {
     return (
         <Box className={classes.wrapper}>
             <Box className={classes.dashboardWrapper}>
-                <Bar options={options} data={dashboardData} />
+                {isLoading && <SkeletonTable numbers={5} />}
+                {!isLoading && <Bar options={options} data={dashboardData} />}
             </Box>
 
             <Box className={classes.filterWrapper}>

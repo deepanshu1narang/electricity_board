@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3001';
+const baseUrl = 'https://electricity-board-backend.onrender.com';
 
 const getHeader = () => {
   return {

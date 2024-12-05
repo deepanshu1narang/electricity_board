@@ -68,6 +68,11 @@ const SearchApplicationModal = ({ }) => {
             description="Enter the Application ID of the user connection"
             inputWrapperOrder={['label', 'error', 'input', 'description']}
             onChange={(e) => { setInputId(e.target.value) }}
+            onKeyDown={e => {
+              if (e.key === "Enter") {
+                searchById();
+              }
+            }}
           />
         </Box>
         <Box className={classes.modalFooter}>

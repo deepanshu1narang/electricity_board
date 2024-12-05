@@ -8,7 +8,7 @@ import { data, statusClass } from './properties';
 import { baseUrl, getHeader } from '../../../Utils/apiConnection';
 import FilterModal from '../FilterModal/FilterModal';
 import ConnectionTable from './ConnectionTable';
-import { Skeleton } from '@mantine/core';
+import SkeletonTable from '../../../Utils/SkeletonTable';
 
 function TableWrapper() {
     const { classes, theme } = useStyles(useStyles)
@@ -111,13 +111,7 @@ function TableWrapper() {
             <Box className={classes.tableContainer}>
                 {entries.length > 0 && <ConnectionTable rows={entries} data={data} statusClass={statusClass} activePage={activePage} pageSize={pageSize} scrolledToEnd={scrolledToEnd} loadMore={loadMore} setScrolledToEnd={setScrolledToEnd} />}
                 {
-                    entries.length === 0 && <>
-                        <Skeleton height={50} mb="xl" />
-                        <Skeleton height={50} mb="xl" />
-                        <Skeleton height={50} mb="xl" />
-                        <Skeleton height={50} mb="xl" />
-                        <Skeleton height={50} mb="xl" />
-                    </>
+                    entries.length === 0 && <SkeletonTable numbers={5} />
                 }
             </Box>
             <FilterModal openFilterModal={openFilterModal} setOpenFilterModal={setOpenFilterModal} applyFilter={AppliedDateFilter} filteredValue={filteredValue} setFilteredValue={setFilteredValue} setActivePage={setActivePage} />
